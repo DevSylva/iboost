@@ -24,17 +24,37 @@ class DepositLog(models.Model):
         ("COMPLETED", "COMPLETED"),
     )
 
-    dateway = models.CharField(max_length=30)
+    gateway = models.CharField(max_length=30)
     status = models.CharField(choices=STATUS, default=STATUS[0], max_length=30)
     time = models.DateTimeField()
 
-class Order(models.Model):
-    STATUS = (
-        ("PENDING", "PENDING"),
-        ("COMPLETED", "COMPLETED"),
+class InstagramService(models.Model):
+
+    SERVICE_NAME = (
+        ("Real Nigerian Instagram Follower", "Real Nigerian Instagram Follower"),
+        ("Instagram Reach + Impressions + Profile Visits [Post Link]", "Instagram Reach + Impressions + Profile Visits [Post Link]"),
+        ("Instagram Reach + Impressions [Post Link]", "Instagram Reach + Impressions [Post Link]"),
+        ("Instagram Emoji Comments", "Instagram Emoji Comments"),
+        ("Instagram Random Comments", "Instagram Random Comments"),
+        ("Instagram Likes [Post Link]", "Instagram Likes [Post Link]"),
+        ("Instagram Followers", "Instagram Followers"),
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    service = models.CharField(max_length=30)
-    link = models.URLField()
-    quantity = models.PositiveIntegerField()
-    status = models.CharField(choices=STATUS, default=STATUS[0], max_length=30)
+    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0])
+    price = models.FloatField(default=0)
+
+    def __str__(self):
+        return self.service
+
+
+class TikTokService(models.Model):
+    SERVICE_NAME = (
+        ("Tiktok Like [Post Link]", "Tiktok Like [Post Link]"),
+        ("TikTok Followers", "TikTok Followers"),
+        ("Cheapest TikTok Video Views [Post Link]", "Cheapest TikTok Video Views [Post Link]s")
+    )
+
+    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0])
+    price = models.FloatField(default=0)
+
+    def __str__(self):
+        return self.service

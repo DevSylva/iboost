@@ -1,0 +1,1 @@
+from socialmediamarket.wsgi import application
