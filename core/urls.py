@@ -16,4 +16,6 @@ urlpatterns = [
     path("terms-and-condition/", views.termsAndCondition, name="termsAndCondition"),
     path("privacy-policy/", views.privacyProlicy, name="privacy"),
     path("refund-policy/", views.refundPolicy, name="refundPolicy"),
+    path("user/profile-settings/", views.profileSettings, name="profileSettings"),
+    path("user/deposit/preview/", views.depositPreview, name="depositPreview"),
 ]

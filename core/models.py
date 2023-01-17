@@ -13,6 +13,14 @@ class Transaction(models.Model):
         return self.user
 
 
+class DepositPreview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    amount = models.FloatField(default=0)
+
+    def __str__(self):
+        return str(self.amount)
+
+
 class DepositLog(models.Model):
     GATEWAY = (
         ("FLUTTERWAVE", "FLUTTERWAVE"),
@@ -39,7 +47,7 @@ class InstagramService(models.Model):
         ("Instagram Likes [Post Link]", "Instagram Likes [Post Link]"),
         ("Instagram Followers", "Instagram Followers"),
     )
-    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0])
+    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0], unique=True)
     price = models.FloatField(default=0)
 
     def __str__(self):
@@ -53,7 +61,21 @@ class TikTokService(models.Model):
         ("Cheapest TikTok Video Views [Post Link]", "Cheapest TikTok Video Views [Post Link]s")
     )
 
-    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0])
+    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0], unique=True)
+    price = models.FloatField(default=0)
+
+    def __str__(self):
+        return self.service
+
+
+class YoutubeService(models.Model):
+    SERVICE_NAME = (
+        ("Youtube Views [RECOMMENDED]", "Youtube Views [RECOMMENDED]"),
+        ("Youtube Subscribers", "Youtube Subscribers"),
+        ("Youtube Likes", "Youtube Likes")
+    )
+
+    service = models.CharField(max_length=200, choices=SERVICE_NAME, default=SERVICE_NAME[0], unique=True)
     price = models.FloatField(default=0)
 
     def __str__(self):

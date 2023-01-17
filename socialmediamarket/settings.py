@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-$p6+1rm)-b57^0_&_u$7@b1ma@v&7k_m%b92vfw0h*m1y5)u5l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["iboost.ng"]
+ALLOWED_HOSTS = ["iboost.ng", "*"]
 
 
 # Application definition
@@ -135,3 +135,4 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+COINBASE_COMMERCE_API_KEY = '169d320c-766e-41d1-b6ec-337e2338c9f0'
