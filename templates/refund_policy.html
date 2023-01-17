@@ -9,7 +9,7 @@
 <meta name="title" Content="Iboost.ng - Refund Policy">
 <meta name="description" content="Cheapest Social Media Followers and Likes Service In Nigeria Starting At Only ₦1">
 <meta name="keywords" content="tiktok,instagram followers,buy instagram followers,instagram likes,buy instagram likes,buy instagram views,instagram followers nigeria,buy followers in nigeria">
-<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favicon.png' %}" type="image/x-icon">
+<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favico.png' %}" type="image/x-icon">
 <link rel="apple-touch-icon" href="{% static 'assets/images/logoIcon/logo.png' %}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -93,34 +93,7 @@
 
 
 
-<header class="header-section">
-<div class="header">
-<div class="header-bottom-area">
-<div class="container">
-<div class="header-menu-content">
-<nav class="navbar navbar-expand-lg p-0">
-<a class="site-logo site-title" href="https://iboost.ng"><img src="{% static 'assets/images/logoIcon/logo.png' %}" height="34px" alt="site-logo"></a>
-<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<span class="fas fa-bars"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav main-menu ml-auto">
-<li><a href="{% url 'core:home' %}">Home</a></li>
-<li><a href="{% url 'core:services' %}">Services</a></li>
-<li><a href="{% url 'core:contact' %}">Contact</a></li>
-
-<!-- <li><a href="">Dashboard</a></li>
-<li><a href="">Logout</a></li> -->
-
-
-</ul>
-</div>
-</nav>
-</div>
-</div>
- </div>
-</div>
-</header>
+{% include 'layout/header.html' %}
 
 <a href="#" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
 
@@ -197,56 +170,7 @@
 </section>
 
 
-<footer class="footer-section ptb-80">
-<div class="container">
-<div class="footer-area mrt-100">
-<div class="row ml-b-30">
-<div class="col-lg-4 col-sm-8 mrb-30">
-<div class="footer-widget widget-menu">
-<div class="footer-logo">
-<h3 class="widget-title">About Us</h3>
-<p>Iboost Is The Cheapest Social Media Marketing Service Panel Providing Affordable Social Media Marketing Services To Boost Your Presence On Instagram, TikTok And YouTube.</p>
-<div class="social-area">
-<ul class="footer-social">
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-2 col-sm-6 mrb-30">
-<div class="footer-widget">
-<h3 class="widget-title">Quick Link</h3>
-<ul>
-<li><a href="{% url 'core:services' %}">Services</a></li>
-<li><a href="{% url 'core:contact' %}">Contact</a></li>
-</ul>
-</div>
-</div>
-<div class="col-lg-3 col-sm-6 mrb-30">
-<div class="footer-widget">
-<h3 class="widget-title">Privacy and Terms</h3>
-<ul>
-<li><a href="">Refund Policy</a></li>
-<li><a href="">Privacy and Policy</a></li>
-<li><a href="#">Terms and Conditions</a></li>
-
-</ul>
-</div>
-</div>
-<div class="col-lg-3 col-sm-6 mrb-30">
-<div class="footer-widget widget-menu">
-<h3 class="widget-title">contact info</h3>
-<ul class="footer-contact-list">
-
-
-<li><a href="mailto:info@iboost.ng">info@iboost.ng</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</footer>
+{% include 'layout/footer.html' %}
 <div class="privacy-area privacy-area--style">
 <div class="container">
 <div class="copyright-area d-flex flex-wrap align-items-center justify-content-center">
@@ -272,17 +196,17 @@
 
 <script src="{% static 'assets/templates/basic/js/swiper.min.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
-<script src="{% static 'assets/templates/basic/js/plugin.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/templates/basic/js/plugin.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
-<script src="{% static 'assets/templates/basic/js/chart.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/templates/basic/js/chart.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
-<script src="{% static 'assets/templates/basic/js/viewport.jquery.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/templates/basic/js/viewport.jquery.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
-<script src="{% static 'assets/templates/basic/js/odometer.min.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/templates/basic/js/odometer.min.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
-<script src="{% static 'assets/templates/basic/js/wow.min.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/templates/basic/js/wow.min.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
-<script src="{% static 'assets/templates/basic/js/main.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/templates/basic/js/main.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-211452243-1" type="1d6535dab124deac0c88e163-text/javascript"></script>
 <script type="1d6535dab124deac0c88e163-text/javascript">
                   window.dataLayer = window.dataLayer || [];
@@ -292,8 +216,8 @@
                   gtag("config", "UA-211452243-1");
                 </script>
 <link rel="stylesheet" href="{% static 'assets/admin/css/iziToast.min.css">
-<script src="{% static 'assets/admin/js/iziToast.min.js" type="1d6535dab124deac0c88e163-text/javascript"></script>
+<script src="{% static 'assets/admin/js/iziToast.min.js' %}" type="1d6535dab124deac0c88e163-text/javascript"></script>
 
 <script type="1d6535dab124deac0c88e163-text/javascript" src="https://apiv2.popupsmart.com/api/Bundle/382489" async></script>
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1d6535dab124deac0c88e163-|49" defer=""></script></body>
+<script src="{% static 'cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="1d6535dab124deac0c88e163-|49" defer=""></script></body>
 </html>

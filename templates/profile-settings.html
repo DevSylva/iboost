@@ -9,16 +9,16 @@
 <meta name="title" Content="Iboost.ng - Profile Setting">
 <meta name="description" content="Cheapest Social Media Followers and Likes Service In Nigeria Starting At Only ₦1">
 <meta name="keywords" content="tiktok,instagram followers,buy instagram followers,instagram likes,buy instagram likes,buy instagram views,instagram followers nigeria,buy followers in nigeria">
-<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favicon.png' %}" type="image/x-icon">
+<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favico.png' %}" type="image/x-icon">
 <link rel="apple-touch-icon" href="{% static 'assets/images/logoIcon/logo.png' %}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Slab.ng - Profile Setting">
-<meta itemprop="name" content="Slab.ng - Profile Setting">
+<meta itemprop="name" content="Iboost.ng - Profile Setting">
 <meta itemprop="description" content="">
 <meta itemprop="image" content="{% static 'assets/images/seo/617e7c58c2d741635679320.png' %}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Slab.ng">
+<meta property="og:title" content="Iboost.ng">
 <meta property="og:description" content="Cheapest Social Media Followers and Likes Service In Nigeria Starting At Only ₦1">
 <meta property="og:image" content="{% static 'assets/images/seo/617e7c58c2d741635679320.png' %}" />
 <meta property="og:image:type" content="image/png" />
@@ -96,64 +96,13 @@
 
 {% include 'layout/dash.html' %}
 
-<nav class="navbar-wrapper">
-<form class="navbar-search" onsubmit="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-08919fe9464fb6cc33725e7f-="">
-<button type="submit" class="navbar-search__btn">
-<i class="las la-search"></i>
-</button>
-<input type="search" name="navbar-search__field" id="navbar-search__field" placeholder="Search...">
-<button type="button" class="navbar-search__close"><i class="las la-times"></i></button>
-<div id="navbar_search_result_area">
-<ul class="navbar_search_result"></ul>
-</div>
-</form>
-<div class="navbar__left">
-<button class="res-sidebar-open-btn"><i class="las la-bars"></i></button>
-<button type="button" class="fullscreen-btn">
-<i class="fullscreen-open las la-compress" onclick="if (!window.__cfRLUnblockHandlers) return false; openFullscreen();" data-cf-modified-08919fe9464fb6cc33725e7f-=""></i>
-<i class="fullscreen-close las la-compress-arrows-alt" onclick="if (!window.__cfRLUnblockHandlers) return false; closeFullscreen();" data-cf-modified-08919fe9464fb6cc33725e7f-=""></i>
-</button>
-</div>
-<div class="navbar__right">
-<ul class="navbar__action-list">
-<li class="dropdown">
-<button type="button" class="" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-<span class="navbar-user">
-<span class="navbar-user__thumb"><img src="https://slab.ng/placeholder-image/350x300" alt="image"></span>
-<span class="navbar-user__info">
-<span class="navbar-user__name">devsylva</span>
-</span>
-<span class="icon"><i class="las la-chevron-circle-down"></i></span>
-</span>
-</button>
-<div class="dropdown-menu dropdown-menu--sm p-0 border-0 box--shadow1 dropdown-menu-right">
-<a href="https://slab.ng/user/profile-setting" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon las la-user-circle"></i>
-<span class="dropdown-menu__caption">Profile</span>
-</a>
-<a href="https://slab.ng/user/change-password" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
- <i class="dropdown-menu__icon las la-key"></i>
-<span class="dropdown-menu__caption">Change Password</span>
-</a>
-<a href="https://slab.ng/user/twofactor" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon la la-lock"></i>
-<span class="dropdown-menu__caption">2FA Security</span>
-</a>
-<a href="https://slab.ng/logout" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon las la-sign-out-alt"></i>
-<span class="dropdown-menu__caption">Logout</span>
-</a>
-</div>
-</li>
-</ul>
-</div>
-</nav>
+{% include 'layout/nav.html' %}
 
 <div class="body-wrapper">
 <div class="bodywrapper__inner">
 <div class="row align-items-center mb-10 justify-content-between">
 <div class="col-lg-6 col-sm-6">
-<h6 class="page-title">Profile Setting</h6>
+<h6 class="page-title">Profile Settings</h6>
 </div>
 <div class="col-lg-6 col-sm-6 text-sm-right mt-sm-0 mt-3 right-part">
 </div>
@@ -171,7 +120,7 @@
 <div class="image-upload">
 <div class="thumb">
 <div class="avatar-preview">
-<div class="profilePicPreview" style="background-image: url({{user.profilepic.url}})">
+<div class="profilePicPreview" style="background-image: url('{% if not user.profile_pic.url %}https://via.placeholder.com/150{% else %}{{user.profile_pic.url }}{% endif %}')">
 <button type="button" class="remove-image"><i class="fa fa-times"></i></button>
 </div>
 </div>

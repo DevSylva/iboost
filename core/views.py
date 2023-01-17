@@ -4,16 +4,22 @@ from coinbase_commerce.client import Client
 from socialmediamarket import settings
 from account.models import User 
 from core.models import Transaction, DepositPreview
+from django.contrib import messages
+
 
 # Create your views here.
 def index(request):
+    messages.success(request, "welcome")
     return render(request, "index.html")
+
 
 def services(request):
     return render(request, "services.html")
 
+
 def contact(request):
     return render(request, "contact.html")
+
 
 @login_required(login_url="account:login")
 def dashboard(request):
@@ -25,41 +31,59 @@ def dashboard(request):
     }
     return render(request, "dashboard.html", context=data)
 
+
+@login_required(login_url="account:login")
 def userServices(request):
     return render(request, "user_services.html")
 
+
+@login_required(login_url="account:login")
 def orderHistory(request):
     return render(request, "orderhistory.html")
 
+
 @login_required(login_url="account:login")
 def deposit(request):
+    userId = request.user.id
+    user = User.objects.get(id=userId)
+    try:
+        DepositPreview.objects.filter(user=user).all().delete()
+    except DepositPreview.DoesNotExist:
+        pass
     if request.method == "POST":
         amount = float(request.POST['amount'])
-        userId = request.user.id
-        user = User.objects.get(id=userId)
-        print(amount)
-        deposit_preview = DepositPreview.objects.create(user=user, amount=amount)
+        DepositPreview.objects.create(user=user, amount=amount)
         return redirect("core:depositPreview")
 
     return render(request, "order.html")
 
+
+@login_required(login_url="account:login")
 def depositLog(request):
     return render(request, "orderhistory.html")
 
+
+@login_required(login_url="account:login")
 def transactions(request):
     return render(request, "transactions.html")
 
+
+@login_required(login_url="account:login")
 def supportTicket(request):
     return render(request, "support_ticket.html")
 
+
 def termsAndCondition(request):
-    return render(request, "terms_and_conditon")
+    return render(request, "terms_and_condition.html")
+
 
 def refundPolicy(request):
     return render(request, "refund_policy.html")
 
+
 def privacyProlicy(request):
     return render(request, "privacy_policy.html")
+
 
 @login_required(login_url="account:login")
 def profileSettings(request):
@@ -68,6 +92,7 @@ def profileSettings(request):
         "user": user,
     }
     return render(request, "profile-settings.html", context=data)
+
 
 @login_required(login_url="account:login")
 def depositPreview(request):
@@ -99,6 +124,5 @@ def depositPreview(request):
         "preview": depositpreview,
         "charge": charge
     }
-
 
     return render(request, "deposit-preview.html", context=data)

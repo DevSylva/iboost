@@ -42,7 +42,8 @@ def loginView(request):
             else:
                 messages.error(request, "User does not exit")
         else:
-            messages.error(request, form.errors)
+            messages.error(request, form.errors.as_ul())
+            print(form.errors)
             return redirect("account:login")
 
     form = AuthenticationForm()

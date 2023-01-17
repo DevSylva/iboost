@@ -9,7 +9,7 @@
 <meta name="title" Content="iboost.ng - Home">
 <meta name="description" content="Cheapest Social Media Followers and Likes Service In Nigeria Starting At Only ₦1">
 <meta name="keywords" content="tiktok,instagram followers,buy instagram followers,instagram likes,buy instagram likes,buy instagram views,instagram followers nigeria,buy followers in nigeria">
-<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favicon.png' %}" type="image/x-icon">
+<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favico.png' %}" type="image/x-icon">
 <link rel="apple-touch-icon" href="{% static 'assets/images/logoIcon/logo.png' %}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -96,6 +96,7 @@
 
 
 {% include 'layout/header.html' %}
+
 
 <a href="#" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
 
@@ -528,15 +529,26 @@ Stop struggling to increase your social media presence and take advantage of the
                 </script>
 <link rel="stylesheet" href="{% static 'assets/admin/css/iziToast.min.css' %}">
 <script src="{% static 'assets/admin/js/iziToast.min.js' %}" type="d11b34a6a8773c2db3782d5d-text/javascript"></script>
+
 <script type="d11b34a6a8773c2db3782d5d-text/javascript">
-"use strict";
-    function notify(status,message) {
-        iziToast[status]({
-            message: message,
-            position: "topRight"
-        });
-    }
+
+    "use strict";
+        function notify(status,message) {
+            iziToast[status]({
+                message: {{messages}},
+                position: "topRight"
+            });
+        }
+
 </script>
+<script type="d11b34a6a8773c2db3782d5d-text/javascript">
+    {% if messages %}
+    {% for message in messages %}
+    iziToast.success({message: {{message}}, position: "topRight"});
+    {% endfor %}
+    {% endif %}
+</script>
+
 <script type="d11b34a6a8773c2db3782d5d-text/javascript">
     (function ($) {
         "use strict";

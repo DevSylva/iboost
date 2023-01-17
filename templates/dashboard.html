@@ -9,7 +9,7 @@
 <meta name="title" Content="Iboost.ng - Dashboard">
 <meta name="description" content="Cheapest Social Media Followers and Likes Service In Nigeria Starting At Only ₦1">
 <meta name="keywords" content="tiktok,instagram followers,buy instagram followers,instagram likes,buy instagram likes,buy instagram views,instagram followers nigeria,buy followers in nigeria">
-<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favicon.png' %}" type="image/x-icon">
+<link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favico.png' %}" type="image/x-icon">
 <link rel="apple-touch-icon" href="{% static 'assets/images/logoIcon/logo.png' %}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -89,58 +89,7 @@
 {% include 'layout/dash.html' %}
 
 
-<nav class="navbar-wrapper">
-<form class="navbar-search" onsubmit="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-4c8ac24d79083f904de32b84-="">
-<button type="submit" class="navbar-search__btn">
-<i class="las la-search"></i>
-</button>
-<input type="search" name="navbar-search__field" id="navbar-search__field" placeholder="Search...">
-<button type="button" class="navbar-search__close"><i class="las la-times"></i></button>
-<div id="navbar_search_result_area">
-<ul class="navbar_search_result"></ul>
-</div>
-</form>
-<div class="navbar__left">
-<button class="res-sidebar-open-btn"><i class="las la-bars"></i></button>
-<button type="button" class="fullscreen-btn">
-<i class="fullscreen-open las la-compress" onclick="if (!window.__cfRLUnblockHandlers) return false; openFullscreen();" data-cf-modified-4c8ac24d79083f904de32b84-=""></i>
-<i class="fullscreen-close las la-compress-arrows-alt" onclick="if (!window.__cfRLUnblockHandlers) return false; closeFullscreen();" data-cf-modified-4c8ac24d79083f904de32b84-=""></i>
-</button>
-</div>
-<div class="navbar__right">
-<ul class="navbar__action-list">
-<li class="dropdown">
-<button type="button" class="" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-<span class="navbar-user">
-<span class="navbar-user__thumb"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.infotradeuganda.com%2F&psig=AOvVaw1au6Pitid_NhhcKliV3urU&ust=1674002300378000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDF59SuzfwCFQAAAAAdAAAAABAJ" alt="image"></span>
-<span class="navbar-user__info">
-<span class="navbar-user__name">{{ user.username }}</span>
-</span>
-<span class="icon"><i class="las la-chevron-circle-down"></i></span>
-</span>
-</button>
-<div class="dropdown-menu dropdown-menu--sm p-0 border-0 box--shadow1 dropdown-menu-right">
-<a href="https://slab.ng/user/profile-setting" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon las la-user-circle"></i>
-<span class="dropdown-menu__caption">Profile</span>
-</a>
-<a href="https://slab.ng/user/change-password" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon las la-key"></i>
-<span class="dropdown-menu__caption">Change Password</span>
-</a>
-<a href="https://slab.ng/user/twofactor" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon la la-lock"></i>
-<span class="dropdown-menu__caption">2FA Security</span>
-</a>
-<a href="{% url 'account:logout' %}" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon las la-sign-out-alt"></i>
-<span class="dropdown-menu__caption">Logout</span>
-</a>
-</div>
-</li>
-</ul>
-</div>
-</nav>
+{% include 'layout/nav.html' %}
 
 <div class="body-wrapper">
 <div class="bodywrapper__inner">
