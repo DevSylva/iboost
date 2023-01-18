@@ -5,11 +5,12 @@ from socialmediamarket import settings
 from account.models import User 
 from core.models import Transaction, DepositPreview
 from django.contrib import messages
+from django.http import HttpResponse
+from django.contrib.sites.shortcuts import get_current_site
 
 
 # Create your views here.
 def index(request):
-    messages.success(request, "welcome")
     return render(request, "index.html")
 
 
@@ -55,7 +56,7 @@ def deposit(request):
         DepositPreview.objects.create(user=user, amount=amount)
         return redirect("core:depositPreview")
 
-    return render(request, "order.html")
+    return render(request, "deposit.html")
 
 
 @login_required(login_url="account:login")
@@ -99,17 +100,16 @@ def depositPreview(request):
     userId = request.user.id
     user = User.objects.get(id=userId)
     depositpreview = DepositPreview.objects.get(user=user)
-    convertedPrice = depositpreview.amount
 
     # creating a charge
     client = Client(api_key=settings.COINBASE_COMMERCE_API_KEY)
-    domain_url = "https://iboost.ng/"
+    domain_url = get_current_site(request)
     product = {
         'name': 'Iboost Deposit',
         'description': 'funding of iboost account',
         'local_price': {
-            'amount': convertedPrice,
-            'currency': 'USD'
+            'amount': f"{depositpreview.amount}",
+            'currency': 'NGN'
         },
         'pricing_type': 'fixed_price',
         'redirect_url': domain_url + 'success/',
@@ -126,3 +126,17 @@ def depositPreview(request):
     }
 
     return render(request, "deposit-preview.html", context=data)
+
+
+@login_required(login_url="account:login")
+def success(request):
+    user = User.objects.get(id=request.user.id)
+    depositData = DepositPreview.objects.get(user=user)
+    user.balance += depositData.amount
+    user.save()
+    return HttpResponse(request, "deposit successful")
+
+
+@login_required(login_url="account:login")
+def cancel(request):
+    return HttpResponse(request, "deposit failed")

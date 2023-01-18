@@ -21,7 +21,7 @@
 <li class="dropdown">
 <button type="button" class="" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
 <span class="navbar-user">
-<span class="navbar-user__thumb"><a href="https://placeholder.com"><img src="{{ user.profile_pic.url }}" alt=""></a></span>
+<span class="navbar-user__thumb"><a href="https://placeholder.com"><img src="{% if not user.profile_pic %}https://via.placeholder.com/150{% else %}{{user.profile_pic.url }}{% endif %}" alt=""></a></span>
 <span class="navbar-user__info">
 <span class="navbar-user__name">{{ user.username }}</span>
 </span>
@@ -33,13 +33,10 @@
 <i class="dropdown-menu__icon las la-user-circle"></i>
 <span class="dropdown-menu__caption">Profile</span>
 </a>
-<a href="#" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
+<a href="{% url 'account:changePassword' %}" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
 <i class="dropdown-menu__icon las la-key"></i>
 <span class="dropdown-menu__caption">Change Password</span>
 </a>
-<a href="#" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
-<i class="dropdown-menu__icon la la-lock"></i>
-<span class="dropdown-menu__caption">2FA Security</span>
 </a>
 <a href="{% url 'account:logout' %}" class="dropdown-menu__item d-flex align-items-center px-3 py-2">
 <i class="dropdown-menu__icon las la-sign-out-alt"></i>

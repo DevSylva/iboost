@@ -16,8 +16,8 @@
 <li><a href="{% url 'core:contact' %}">Contact</a></li>
 
 {% if request.user.is_authenticated %}
-<li><a href="{% url 'account:login' %}">Dashboard</a></li>
-<li><a href="{% url 'account:register' %}" class="cmn-btn text px-3 py-2 mt-2" style="color:#ffffff !important;">Logout</a></li>
+<li><a href="{% url 'core:dashboard' %}">Dashboard</a></li>
+<li><a href="{% url 'account:logout' %}" class="cmn-btn text px-3 py-2 mt-2" style="color:#ffffff !important;">Logout</a></li>
 {% else %}
 <li><a href="{% url 'account:login' %}">Login</a></li>
 <li><a href="{% url 'account:register' %}" class="cmn-btn text px-3 py-2 mt-2" style="color:#ffffff !important;">Register</a></li>

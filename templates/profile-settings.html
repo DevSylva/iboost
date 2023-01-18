@@ -120,7 +120,7 @@
 <div class="image-upload">
 <div class="thumb">
 <div class="avatar-preview">
-<div class="profilePicPreview" style="background-image: url('{% if not user.profile_pic.url %}https://via.placeholder.com/150{% else %}{{user.profile_pic.url }}{% endif %}')">
+<div class="profilePicPreview" style="background-image: url('{% if not user.profile_pic %}https://via.placeholder.com/150{% else %}{{user.profile_pic.url }}{% endif %}')">
 <button type="button" class="remove-image"><i class="fa fa-times"></i></button>
 </div>
 </div>
