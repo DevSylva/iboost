@@ -22,7 +22,7 @@ def register(request):
 
             login(request, user)
 
-            return redirect("core:home")
+            return redirect("core:dashboard")
         else:
             messages.error(request, form.errors)
             print(form.errors)

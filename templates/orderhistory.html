@@ -128,9 +128,15 @@
 </tr>
 </thead>
 <tbody>
+{% for i in orders %}
 <tr>
-<td class="text-muted text-center" colspan="100%">No result found</td>
+<td data-label="Category" class="break_line">{{i.id}}</td>
+<td data-label="Category" class="break_line">{{i.service}}</td>
+<td data-label="Category" class="break_line">{{i.link}}</td>
+<td data-label="Category" class="break_line">{{i.quantity}}</td>
+<td data-label="Category" class="break_line">{{i.status}}</td>
 </tr>
+{% endfor %}
 </tbody>
 </table>
 </div>

@@ -5,5 +5,7 @@ from .models import *
 admin.site.register(DepositLog)
 admin.site.register(Transaction)
 admin.site.register(InstagramService)
-admin.site.register(TikTokService)
+admin.site.register(TiktokService)
 admin.site.register(YoutubeService)
+admin.site.register(OrderHistory)
+

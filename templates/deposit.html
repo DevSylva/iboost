@@ -58,7 +58,8 @@
 <link rel="stylesheet" href="{% static 'assets/templates/basic//css/bootstrap-fileinput.css' %}">
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 
 <script type="481f2ea4d7c39baa8e51cd95-text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/25397861.js"></script>
 
 
@@ -89,6 +90,20 @@
 {% include 'layout/nav.html' %}
 
 <div class="body-wrapper">
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="container-fluid p-0">
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="True">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    </div>
+{% endfor %}
+</ul>
+{% endif %}
 <div class="bodywrapper__inner">
 <div class="row align-items-center mb-10 justify-content-between">
 <div class="col-lg-6 col-sm-6">
@@ -103,13 +118,13 @@
 <div class="row">
 <div class="col-lg-3 col-md-3 mb-4">
 <div class="card card-deposit">
-<h5 class="card-header text-center">Flutterwave - INSTANT
+<h5 class="card-header text-center">Paystack - INSTANT
 </h5>
 <div class="card-body card-body-deposit">
-<img src="{% static 'assets/images/gateway/5f6f1b9e4bb961601117086.jpg' %}" class="card-img-top" alt="Flutterwave - INSTANT" class="w-100">
+<img src="{% static 'assets/images/gateway/paystack-logo-vector.png' %}" class="card-img-top" alt="Paystack - INSTANT" class="w-100">
 </div>
 <div class="card-footer">
-<a href="javascript:void(0)" data-id="16" data-resource="{&quot;id&quot;:16,&quot;name&quot;:&quot;Flutterwave - INSTANT&quot;,&quot;currency&quot;:&quot;NGN&quot;,&quot;symbol&quot;:&quot;\u20a6&quot;,&quot;method_code&quot;:&quot;109&quot;,&quot;gateway_alias&quot;:&quot;flutterwave&quot;,&quot;min_amount&quot;:&quot;500.00000000&quot;,&quot;max_amount&quot;:&quot;1000000.00000000&quot;,&quot;percent_charge&quot;:&quot;0.00&quot;,&quot;fixed_charge&quot;:&quot;0.00000000&quot;,&quot;rate&quot;:&quot;1.00000000&quot;,&quot;image&quot;:null,&quot;gateway_parameter&quot;:&quot;{\&quot;public_key\&quot;:\&quot;FLWPUBK-763b0a805924c7d5aaf2bba3d058c2a5-X\&quot;,\&quot;secret_key\&quot;:\&quot;FLWSECK-32f9671335f4f0ea9907f30f396c87c8-X\&quot;,\&quot;encryption_key\&quot;:\&quot;32f9671335f4548647c9845a\&quot;}&quot;,&quot;created_at&quot;:&quot;2022-01-31T20:30:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2022-01-31T20:30:59.000000Z&quot;,&quot;method&quot;:{&quot;id&quot;:9,&quot;code&quot;:&quot;109&quot;,&quot;alias&quot;:&quot;flutterwave&quot;,&quot;image&quot;:&quot;5f6f1b9e4bb961601117086.jpg&quot;,&quot;name&quot;:&quot;Flutterwave&quot;,&quot;status&quot;:true,&quot;parameters&quot;:&quot;{\&quot;public_key\&quot;:{\&quot;title\&quot;:\&quot;Public Key\&quot;,\&quot;global\&quot;:true,\&quot;value\&quot;:\&quot;FLWPUBK-763b0a805924c7d5aaf2bba3d058c2a5-X\&quot;},\&quot;secret_key\&quot;:{\&quot;title\&quot;:\&quot;Secret Key\&quot;,\&quot;global\&quot;:true,\&quot;value\&quot;:\&quot;FLWSECK-32f9671335f4f0ea9907f30f396c87c8-X\&quot;},\&quot;encryption_key\&quot;:{\&quot;title\&quot;:\&quot;Encryption Key\&quot;,\&quot;global\&quot;:true,\&quot;value\&quot;:\&quot;32f9671335f4548647c9845a\&quot;}}&quot;,&quot;supported_currencies&quot;:&quot;{\&quot;BIF\&quot;:\&quot;BIF\&quot;,\&quot;CAD\&quot;:\&quot;CAD\&quot;,\&quot;CDF\&quot;:\&quot;CDF\&quot;,\&quot;CVE\&quot;:\&quot;CVE\&quot;,\&quot;EUR\&quot;:\&quot;EUR\&quot;,\&quot;GBP\&quot;:\&quot;GBP\&quot;,\&quot;GHS\&quot;:\&quot;GHS\&quot;,\&quot;GMD\&quot;:\&quot;GMD\&quot;,\&quot;GNF\&quot;:\&quot;GNF\&quot;,\&quot;KES\&quot;:\&quot;KES\&quot;,\&quot;LRD\&quot;:\&quot;LRD\&quot;,\&quot;MWK\&quot;:\&quot;MWK\&quot;,\&quot;MZN\&quot;:\&quot;MZN\&quot;,\&quot;NGN\&quot;:\&quot;NGN\&quot;,\&quot;RWF\&quot;:\&quot;RWF\&quot;,\&quot;SLL\&quot;:\&quot;SLL\&quot;,\&quot;STD\&quot;:\&quot;STD\&quot;,\&quot;TZS\&quot;:\&quot;TZS\&quot;,\&quot;UGX\&quot;:\&quot;UGX\&quot;,\&quot;USD\&quot;:\&quot;USD\&quot;,\&quot;XAF\&quot;:\&quot;XAF\&quot;,\&quot;XOF\&quot;:\&quot;XOF\&quot;,\&quot;ZMK\&quot;:\&quot;ZMK\&quot;,\&quot;ZMW\&quot;:\&quot;ZMW\&quot;,\&quot;ZWD\&quot;:\&quot;ZWD\&quot;}&quot;,&quot;crypto&quot;:&quot;0&quot;,&quot;extra&quot;:null,&quot;description&quot;:null,&quot;input_form&quot;:null,&quot;created_at&quot;:&quot;2019-09-14T09:14:22.000000Z&quot;,&quot;updated_at&quot;:&quot;2021-12-15T10:59:20.000000Z&quot;}}" data-min_amount="500" data-max_amount="1000000" data-base_symbol="₦" data-fix_charge="0" data-percent_charge="0" class=" btn  btn--primary btn-block custom-success deposit" data-toggle="modal" data-target="#exampleModal">
+<a href="javascript:void(0)" data-id="16" data-resource="{&quot;id&quot;:16,&quot;name&quot;:&quot;Flutterwave - INSTANT&quot;,&quot;currency&quot;:&quot;NGN&quot;,&quot;symbol&quot;:&quot;\u20a6&quot;,&quot;method_code&quot;:&quot;109&quot;,&quot;gateway_alias&quot;:&quot;flutterwave&quot;,&quot;min_amount&quot;:&quot;500.00000000&quot;,&quot;max_amount&quot;:&quot;1000000.00000000&quot;,&quot;percent_charge&quot;:&quot;0.00&quot;,&quot;fixed_charge&quot;:&quot;0.00000000&quot;,&quot;rate&quot;:&quot;1.00000000&quot;,&quot;image&quot;:null,&quot;gateway_parameter&quot;:&quot;{\&quot;public_key\&quot;:\&quot;FLWPUBK-763b0a805924c7d5aaf2bba3d058c2a5-X\&quot;,\&quot;secret_key\&quot;:\&quot;FLWSECK-32f9671335f4f0ea9907f30f396c87c8-X\&quot;,\&quot;encryption_key\&quot;:\&quot;32f9671335f4548647c9845a\&quot;}&quot;,&quot;created_at&quot;:&quot;2022-01-31T20:30:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2022-01-31T20:30:59.000000Z&quot;,&quot;method&quot;:{&quot;id&quot;:9,&quot;code&quot;:&quot;109&quot;,&quot;alias&quot;:&quot;flutterwave&quot;,&quot;image&quot;:&quot;paystack-logo-vector.png&quot;,&quot;name&quot;:&quot;Flutterwave&quot;,&quot;status&quot;:true,&quot;parameters&quot;:&quot;{\&quot;public_key\&quot;:{\&quot;title\&quot;:\&quot;Public Key\&quot;,\&quot;global\&quot;:true,\&quot;value\&quot;:\&quot;FLWPUBK-763b0a805924c7d5aaf2bba3d058c2a5-X\&quot;},\&quot;secret_key\&quot;:{\&quot;title\&quot;:\&quot;Secret Key\&quot;,\&quot;global\&quot;:true,\&quot;value\&quot;:\&quot;FLWSECK-32f9671335f4f0ea9907f30f396c87c8-X\&quot;},\&quot;encryption_key\&quot;:{\&quot;title\&quot;:\&quot;Encryption Key\&quot;,\&quot;global\&quot;:true,\&quot;value\&quot;:\&quot;32f9671335f4548647c9845a\&quot;}}&quot;,&quot;supported_currencies&quot;:&quot;{\&quot;BIF\&quot;:\&quot;BIF\&quot;,\&quot;CAD\&quot;:\&quot;CAD\&quot;,\&quot;CDF\&quot;:\&quot;CDF\&quot;,\&quot;CVE\&quot;:\&quot;CVE\&quot;,\&quot;EUR\&quot;:\&quot;EUR\&quot;,\&quot;GBP\&quot;:\&quot;GBP\&quot;,\&quot;GHS\&quot;:\&quot;GHS\&quot;,\&quot;GMD\&quot;:\&quot;GMD\&quot;,\&quot;GNF\&quot;:\&quot;GNF\&quot;,\&quot;KES\&quot;:\&quot;KES\&quot;,\&quot;LRD\&quot;:\&quot;LRD\&quot;,\&quot;MWK\&quot;:\&quot;MWK\&quot;,\&quot;MZN\&quot;:\&quot;MZN\&quot;,\&quot;NGN\&quot;:\&quot;NGN\&quot;,\&quot;RWF\&quot;:\&quot;RWF\&quot;,\&quot;SLL\&quot;:\&quot;SLL\&quot;,\&quot;STD\&quot;:\&quot;STD\&quot;,\&quot;TZS\&quot;:\&quot;TZS\&quot;,\&quot;UGX\&quot;:\&quot;UGX\&quot;,\&quot;USD\&quot;:\&quot;USD\&quot;,\&quot;XAF\&quot;:\&quot;XAF\&quot;,\&quot;XOF\&quot;:\&quot;XOF\&quot;,\&quot;ZMK\&quot;:\&quot;ZMK\&quot;,\&quot;ZMW\&quot;:\&quot;ZMW\&quot;,\&quot;ZWD\&quot;:\&quot;ZWD\&quot;}&quot;,&quot;crypto&quot;:&quot;0&quot;,&quot;extra&quot;:null,&quot;description&quot;:null,&quot;input_form&quot;:null,&quot;created_at&quot;:&quot;2019-09-14T09:14:22.000000Z&quot;,&quot;updated_at&quot;:&quot;2021-12-15T10:59:20.000000Z&quot;}}" data-min_amount="500" data-max_amount="1000000" data-base_symbol="₦" data-fix_charge="0" data-percent_charge="0" class=" btn  btn--primary btn-block custom-success deposit" data-toggle="modal" data-target="#exampleModal">
 Deposit Now</a>
 </div>
 </div>
@@ -246,5 +261,8 @@ Deposit Now</a>
         });
     </script>
 <script type="481f2ea4d7c39baa8e51cd95-text/javascript" src="https://apiv2.popupsmart.com/api/Bundle/382489" async></script>
-<script src="{% static 'cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="481f2ea4d7c39baa8e51cd95-|49" defer=""></script></body>
+<script src="{% static 'cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="481f2ea4d7c39baa8e51cd95-|49" defer=""></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script></body>
 </html>

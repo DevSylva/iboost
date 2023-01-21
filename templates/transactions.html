@@ -108,17 +108,16 @@
 <thead>
 <tr>
 <th scope="col">Date</th>
-<th scope="col">TRX</th>
+<th scope="col">ID</th>
 <th scope="col">Amount</th>
-<th scope="col">Charge</th>
-<th scope="col">Post Balance</th>
-<th scope="col">Detail</th>
-</tr>
-</thead>
 <tbody>
+{% for i in transactions %}
 <tr>
-<td class="text-muted text-center" colspan="100%">No history found.</td>
+<td data-label="Category" class="break_line">{{i.time}}</td>
+<td data-label="Category" class="break_line">{{i.id}}</td>
+<td data-label="Category" class="break_line">#{{i.amount}}</td>
 </tr>
+{% endfor %}
 </tbody>
 </table>
 </div>

@@ -105,7 +105,7 @@
 <div class="card-body card-body-deposit">
 <div class="row justify-content-around">
 <div class="col-md-6">
-<img src="{% static 'assets/images/gateway/5f6f1b4c774af1601117004.jpg' %}" alt="Image" class="align-self-center w-auto">
+<img src="{% if preview.method == '506' %}{% static 'assets/images/gateway/5f6f1b4c774af1601117004.jpg' %}{% else %}{% static 'assets/images/gateway/paystack-logo-vector.png' %}{% endif %}" alt="Image" class="align-self-center w-auto">
 </div>
 <div class="col-md-6 align-self-center">
 <ul class="list-group text-center my-3">
