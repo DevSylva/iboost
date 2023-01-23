@@ -270,7 +270,7 @@ function payWithPaystack(e) {
     callback: function(response){
       let message = 'Payment complete! Reference: ' + response.reference;
       alert(message);
-      window.location.assign("https://iboost.ng/user/deposit/success/");
+      window.location.assign("https://iboost.ng/user/deposit/paystack/success/");
     }
   });
 

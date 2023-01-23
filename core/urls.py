@@ -20,6 +20,7 @@ urlpatterns = [
     path("user/deposit/preview/", views.depositPreview, name="depositPreview"),
     path("user/deposit/preview/paystack/", views.paystackDepositPreview, name="paystackDepositPreview"),
     path("user/deposit/success/", views.success, name="success"),
+    path("user/deposit/paystack/success/", views.paystackSuccess, name="paystackSuccess"),
     path("user/deposit/failed/", views.cancel, name="cancel"),
     path("user/support-ticket/new/", views.newSupportTicket, name="newSupportTicket"),
 ]

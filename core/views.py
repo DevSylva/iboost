@@ -238,7 +238,7 @@ def depositPreview(request):
     # creating a charge
     if depositpreview.method == "506":
         client = Client(api_key=settings.COINBASE_COMMERCE_API_KEY)
-        domain_url = "http://localhost:8000"
+        domain_url = "http://iboost.ng"
         product = {
             'name': 'Iboost Deposit',
             'description': 'funding of iboost account',
@@ -278,6 +278,29 @@ def dashboard(request):
         "tx": tx,
     }
     return render(request, "dashboard.html", context=data)
+
+
+
+@login_required(login_url="account:login")
+def paystackSuccess(request):
+    user = User.objects.get(id=request.user.id)
+    depositData = DepositPreview.objects.get(user=user)
+    user.balance += depositData.amount
+    user.save()
+
+    DepositLog.objects.create(
+        user=user, 
+        gateway="Paystack",
+        amount=depositData.amount,
+        status="successful"
+    )
+
+    Transaction.objects.create(
+        user = user, 
+        amount= depositData.amount
+    )
+    messages.success(request, "Deposit Successful")
+    return redirect("core:dashboard")
 
 
 @login_required(login_url="account:login")
