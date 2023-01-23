@@ -1,11 +1,12 @@
 from django.db import models
 from account.models import User
+from django.utils import timezone
 
 # Create your models here.
 class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.FloatField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return str(self.user)
@@ -25,7 +26,7 @@ class DepositLog(models.Model):
     gateway = models.CharField(max_length=30, null=True, blank=True)
     amount = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=30, null=True, blank=True)
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.gateway

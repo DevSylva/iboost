@@ -18,4 +18,5 @@ admin.site.register(InstagramService)
 admin.site.register(TiktokService)
 admin.site.register(YoutubeService)
 admin.site.register(OrderHistory)
+admin.site.register(DepositPreview)
 
