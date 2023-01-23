@@ -214,6 +214,19 @@ def profileSettings(request):
 
 
 @login_required(login_url="account:login")
+def paystackDepositPreview(request):
+    userId = request.user.id
+    user = User.objects.get(id=userId)
+    depositpreview = DepositPreview.objects.get(user=user)
+
+    data = {
+        "preview": depositpreview,
+        "user": user,
+        "public_key": settings.PAYSTACK_PUBLIC_API_KEY
+    }
+    return render(request, "paystack-checkout.html", context=data)
+
+@login_required(login_url="account:login")
 def depositPreview(request):
     userId = request.user.id
     user = User.objects.get(id=userId)
@@ -246,7 +259,7 @@ def depositPreview(request):
         }
 
     else:
-        pass
+        return redirect("core:paystackDepositPreview")
 
 
     return render(request, "deposit-preview.html", context=data)

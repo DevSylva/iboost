@@ -186,6 +186,7 @@ Order
 <div class="table-responsive">
 <table class="table table--light tabstyle--two">
 <thead>
+    
 <tr>
 
 <th scope="col">Service Name</th>
@@ -197,66 +198,17 @@ Order
 </tr>
 </thead>
 <tbody class="customtable">
+{% for i in tiktokService %}
 <tr>
-
-<td data-label="Category" class="break_line">Tiktok Like [Post Link]</td>
-<td data-label="Price Per 1k">₦2000</td>
+<td data-label="Category" class="break_line">{{i.service}}</td>
+<td data-label="Price Per 1k">₦{{i.price_per_k}}</td>
 <td data-label="Action">
-<a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="https://slab.ng/user/order/2/38" data-price_per_k="2000" data-min="100" data-max="1000">
+ <a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="" data-price_per_k="{{i.price_per_k}}" data-min="{{i.minimum}}" data-max="{{i.maximum}}" data-serviceid="{{i.service_id}}">
 Order
 </a>
 </td>
-
-
-
-
-
-
-
-
-
-
 </tr>
-<tr>
-
-<td data-label="Category" class="break_line">🔥🔥🔥 TikTok Followers</td>
-<td data-label="Price Per 1k">₦3500</td>
-<td data-label="Action">
-<a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="https://slab.ng/user/order/2/23" data-price_per_k="3500" data-min="100" data-max="5000">
-Order
-</a>
-</td>
-
-
-
-
-
-
-
-
-
-
-</tr>
- <tr>
-
-<td data-label="Category" class="break_line">🔥🔥 Cheapest TikTok Video Views [Post Link]</td>
-<td data-label="Price Per 1k">₦500</td>
-<td data-label="Action">
-<a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="https://slab.ng/user/order/2/3" data-price_per_k="500" data-min="100" data-max="5000000">
-Order
-</a>
-</td>
-
-
-
-
-
-
-
-
-
-
-</tr>
+{% endfor %}
 </tbody>
 </table>
 </div>
@@ -287,66 +239,18 @@ Order
 </tr>
 </thead>
 <tbody class="customtable">
+{% for i in youtubeService %}
 <tr>
-
-<td data-label="Category" class="break_line">Youtube Views [RECOMMENDED]</td>
-<td data-label="Price Per 1k">₦2500</td>
+<td data-label="Category" class="break_line">{{i.service}}</td>
+<td data-label="Price Per 1k">₦{{i.price_per_k}}</td>
 <td data-label="Action">
-<a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="https://slab.ng/user/order/3/26" data-price_per_k="2500" data-min="100" data-max="1000000">
+ <a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="" data-price_per_k="{{i.price_per_k}}" data-min="{{i.minimum}}" data-max="{{i.maximum}}" data-serviceid="{{i.service_id}}">
 Order
 </a>
 </td>
-
-
-
-
-
-
-
-
-
-
 </tr>
-<tr>
+{% endfor %}
 
-<td data-label="Category" class="break_line">Youtube Subscribers</td>
-<td data-label="Price Per 1k">₦18000</td>
-<td data-label="Action">
-<a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="https://slab.ng/user/order/3/13" data-price_per_k="18000" data-min="50" data-max="2000">
-Order
-</a>
-</td>
-
-
-
-
-
-
-
-
-
-
-</tr>
-<tr>
-
-<td data-label="Category" class="break_line">Youtube Likes</td>
-<td data-label="Price Per 1k">₦2000</td>
-<td data-label="Action">
-<a href="javascript:void(0)" class="icon-btn orderBtn" data-original-title="Edit" data-toggle="tooltip" data-url="https://slab.ng/user/order/3/12" data-price_per_k="2000" data-min="20" data-max="60000">
-Order
-</a>
-</td>
-
-
-
-
-
-
-
-
-
-
-</tr>
 </tbody>
 </table>
 </div>

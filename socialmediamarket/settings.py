@@ -51,6 +51,34 @@ INSTALLED_APPS = [
     "bootstrap4",
 ]
 
+CORS_ALLOW_ALL_ORIGINS: True
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "https://iboost.ng"
+]
+
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 AUTH_USER_MODEL = "account.User"
@@ -128,6 +156,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+USE_THOUSAND_OPERATOR = True
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -159,5 +190,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 COINBASE_COMMERCE_API_KEY = env('COINBASE_COMMERCE_API_KEY')
 FAMSUPAPI_KEY = env('FAMSUPAPI_KEY')
+PAYSTACK_PUBLIC_API_KEY = env('PAYSTACK_PUBLIC_API_KEY')
 
-USE_THOUSAND_OPERATOR = True
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"  # env('EMAIL_HOST')
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')

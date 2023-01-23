@@ -18,7 +18,8 @@ urlpatterns = [
     path("refund-policy/", views.refundPolicy, name="refundPolicy"),
     path("user/profile-settings/", views.profileSettings, name="profileSettings"),
     path("user/deposit/preview/", views.depositPreview, name="depositPreview"),
+    path("user/deposit/preview/paystack/", views.paystackDepositPreview, name="paystackDepositPreview"),
     path("user/deposit/success/", views.success, name="success"),
     path("user/deposit/failed/", views.cancel, name="cancel"),
-    path("support-ticket/new/", views.newSupportTicket, name="newSupportTicket"),
+    path("user/support-ticket/new/", views.newSupportTicket, name="newSupportTicket"),
 ]
