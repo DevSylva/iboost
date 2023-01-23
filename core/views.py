@@ -238,7 +238,7 @@ def depositPreview(request):
     # creating a charge
     if depositpreview.method == "506":
         client = Client(api_key=settings.COINBASE_COMMERCE_API_KEY)
-        domain_url = "http://iboost.ng"
+        domain_url = "https://iboost.ng"
         product = {
             'name': 'Iboost Deposit',
             'description': 'funding of iboost account',
