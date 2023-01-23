@@ -217,7 +217,10 @@ def profileSettings(request):
 def paystackDepositPreview(request):
     userId = request.user.id
     user = User.objects.get(id=userId)
-    depositpreview = DepositPreview.objects.get(user=user)
+    try:
+        depositpreview = DepositPreview.objects.get(user=user)
+    except DepositPreview.DoesNotExist:
+        return HttpResponse(request, "Ooops! something's wrong")
 
     data = {
         "preview": depositpreview,
