@@ -12,6 +12,9 @@ class TransactionAdmin(admin.ModelAdmin):
     list_filter = ("user",)
 
 
+class ContactSupportAdmin(admin.ModelAdmin):
+    list_display = ("user", "subject")
+
 admin.site.register(DepositLog, DepositLogAdmin)
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(InstagramService)
@@ -19,4 +22,6 @@ admin.site.register(TiktokService)
 admin.site.register(YoutubeService)
 admin.site.register(OrderHistory)
 admin.site.register(DepositPreview)
+admin.site.register(CourierService)
+admin.site.register(ContactSupport, ContactSupportAdmin)
 

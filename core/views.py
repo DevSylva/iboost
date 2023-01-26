@@ -67,6 +67,18 @@ def privacyProlicy(request):
 
 def newSupportTicket(request):
     user = User.objects.get(id=request.user.id)
+
+    if request.method == "POST":
+        ContactSupport.objects.create(
+            user=user,
+            name = request.POST["name"],
+            email = request.POST["email"],
+            subject = request.POST["subject"],
+            message = request.POST["message"]
+        )
+        messages.success(request, "message sent")
+        return redirect("core:dashboard")
+
     data = {
         "user": user
     }
@@ -81,10 +93,7 @@ def userServices(request):
 
 
     if request.method == "POST":
-        print(request.POST)
-
         try:
-
             # get the user info
             user = User.objects.get(id=request.user.id)
             userBalance = user.balance
@@ -134,7 +143,7 @@ def userServices(request):
                         service = serviceId,
                         link = link,
                         quantity = quantity,
-                        status = "pending"
+                        status = "success"
                     )
                     message = response.json()
 
@@ -330,3 +339,92 @@ def cancel(request):
     messages.warning(request, "Deposit failed")
     return redirect("core:dashboard")
 
+
+@login_required(login_url="account:login")
+def courierService(request):
+    user = User.objects.get(id=request.user.id)
+    if request.method == "POST":
+        print(request.POST)
+        print(request.POST)
+        user = User.objects.get(id=request.user.id)
+        userBalance = user.balance
+        bill = "#1500.00"
+        chkBal = checkBalance(bill, userBalance)
+        if not chkBal:
+            messages.warning(request, "Insufficient funds")
+            messages.info(request, "Kinldy fund your account")
+            return redirect("core:deposit")
+        else:
+            debitBalance(request.user.id, bill)
+
+            service = CourierService.objects.create(
+                user = user,
+                sender_full_name = request.POST["name"],
+                sender_package = request.POST["shipper_company_name"],
+                sender_address = request.POST["shipper_company_address"],
+                sender_country = request.POST["shipper_company_country"],
+                sender_city = request.POST["shipper_city"],
+                sender_state_province = request.POST["shipper_state"],
+                sender_postal_code = request.POST["shipper_postal_code"],
+                sender_phone_number = request.POST["shipper_telephone_no"],
+                sender_email = request.POST["shipper_email"],
+                sender_type = request.POST["shipper_type"],
+                receiver_full_name = request.POST["receiver_company_name"],
+                receiver_shipping_fee = request.POST["receiver_company_name"],
+                receiver_address = request.POST["receiver_company_address"],
+                receiver_country = request.POST["receiver_company_country"],
+                receiver_city = request.POST["receiver_city"],
+                receiver_state_province = request.POST["receiver_state"],
+                receiver_postal_code = request.POST["receiver_postal_code"],
+                receiver_phone_number = request.POST["receiver_telephone_no"],
+                receiver_email = request.POST["receiver_email"]
+            )
+            
+            url = "https://cargoton.live/api/courier-service/"
+
+            payload = json.dumps({
+                "tracking_id" : service.tracking_id,
+                "sender_full_name" : request.POST["name"],
+                "sender_package" : request.POST["shipper_company_name"],
+                "sender_address" : request.POST["shipper_company_address"],
+                "sender_country" : request.POST["shipper_company_country"],
+                "sender_city" : request.POST["shipper_city"],
+                "sender_state_province" : request.POST["shipper_state"],
+                "sender_postal_code" : request.POST["shipper_postal_code"],
+                "sender_phone_number" : request.POST["shipper_telephone_no"],
+                "sender_email" : request.POST["shipper_email"],
+                "sender_type" : request.POST["shipper_type"],
+                "receiver_full_name" : request.POST["receiver_company_name"],
+                "receiver_shipping_fee" : request.POST["receiver_company_name"],
+                "receiver_address" : request.POST["receiver_company_address"],
+                "receiver_country" : request.POST["receiver_company_country"],
+                "receiver_city" : request.POST["receiver_city"],
+                "receiver_state_province" : request.POST["receiver_state"],
+                "receiver_postal_code" : request.POST["receiver_postal_code"],
+                "receiver_phone_number" : request.POST["receiver_telephone_no"],
+                "receiver_email" : request.POST["receiver_email"]
+            })
+            headers = {
+            'Content-Type': 'application/json'
+            }
+
+            response = requests.request("POST", url, headers=headers, data=payload)
+
+            print(response.text)
+            messages.success(request, "Delivery details saved")
+            return redirect("core:courierDetailsPreview", pk=service.tracking_id)
+   
+    return render(request, "courier-services.html")
+
+
+@login_required(login_url="account:login")
+def courierDetailsPreview(request, pk):
+    try:
+        courierDetails = CourierService.objects.get(tracking_id=pk)
+    except CourierService.DoesNotExist:
+        return HttpResponse(request, "No data found")
+
+    data = {
+        "data": courierDetails
+    }
+    return render(request, "courier-preview.html", context=data)

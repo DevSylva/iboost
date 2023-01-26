@@ -1,6 +1,8 @@
 from django.db import models
 from account.models import User
 from django.utils import timezone
+from uuid import uuid4
+import datetime
 
 # Create your models here.
 class Transaction(models.Model):
@@ -101,3 +103,49 @@ class OrderHistory(models.Model):
     class Meta:
         verbose_name = "Order History"
         verbose_name_plural = "Order Histories"
+
+def create_id():
+    now = datetime.datetime.now()
+    return str(now.year)+str(now.month)+str(now.day)+str(uuid4())[:7]
+
+class CourierService(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    tracking_id = models.CharField(primary_key=True, default=create_id, editable=False, max_length=30)
+    # sender information
+    sender_full_name = models.CharField(max_length=150)
+    sender_package = models.CharField(max_length=500)
+    sender_address = models.CharField(max_length=300)
+    sender_country = models.CharField(max_length=150)
+    sender_city = models.CharField(max_length=150)
+    sender_state_province = models.CharField(max_length=150)
+    sender_postal_code = models.CharField(max_length=150)
+    sender_phone_number = models.CharField(max_length=150)
+    sender_email = models.CharField(max_length=150)
+    sender_type = models.CharField(max_length=150)
+
+    # sender information
+    receiver_full_name = models.CharField(max_length=150)
+    receiver_shipping_fee = models.CharField(max_length=150)
+    receiver_address = models.CharField(max_length=300)
+    receiver_country = models.CharField(max_length=150)
+    receiver_city = models.CharField(max_length=150)
+    receiver_state_province = models.CharField(max_length=150)
+    receiver_postal_code = models.CharField(max_length=150)
+    receiver_phone_number = models.CharField(max_length=150)
+    receiver_email = models.CharField(max_length=150)
+
+    
+    def __str__(self):
+        return str(self.tracking_id)
+
+
+
+class ContactSupport(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=150, null=True, blank=True)
+    subject = models.CharField(max_length=150, null=True, blank=True)
+    email = models.EmailField()
+    message = models.TextField(default="")
+
+    def __str__(self):
+        return str(self.user)

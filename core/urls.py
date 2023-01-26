@@ -23,4 +23,6 @@ urlpatterns = [
     path("user/deposit/paystack/success/", views.paystackSuccess, name="paystackSuccess"),
     path("user/deposit/cancel/", views.cancel, name="cancel"),
     path("user/support-ticket/new/", views.newSupportTicket, name="newSupportTicket"),
+    path("user/services/courier/", views.courierService, name="courierService"),
+    path("user/services/courier/preview/<str:pk>/", views.courierDetailsPreview, name="courierDetailsPreview"),
 ]
